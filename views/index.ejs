@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My YouTube Clone</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+   <nav class="navbar">
+       <a href="/" class="navbar-brand">
+           <img src="https://static-landing-assets.project1content.com/P1TOUR/ZZ/zz_default_v0/logo/pc/logo.png" alt="Logo" class="logo">
+       </a>
+       <input type="text" class="search-bar" placeholder="Введите запрос">
+       <ul class="navbar-nav">
+           <% if (user) { %>
+               <li class="nav-item"><a class="nav-link" href="/upload">Upload</a></li>
+               <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+           <% } else { %>
+               <li class="nav-item"><a class="nav-link btn btn-primary" href="/login">Login</a></li>
+               <li class="nav-item"><a class="nav-link btn register-btn" href="/register">Register</a></li>
+           <% } %>
+           <li class="nav-item"><button id="theme-toggle" class="btn btn-secondary"><i id="theme-icon" class="fas fa-sun"></i></button></li>
+       </ul>
+   </nav>
+
+
+    <div id="sidebar">
+        <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="#">Shorts</a></li>
+            <li><a href="#">Подписки</a></li>
+            <hr>
+            <li><a href="#">Мой канал</a></li>
+            <li><a href="#">История</a></li>
+            <li><a href="#">Плейлисты</a></li>
+            <li><a href="#">Ваши видео</a></li>
+            <li><a href="#">Смотреть позже</a></li>
+            <li><a href="#">Понравившиеся</a></li>
+        </ul>
+    </div>
+
+   <div class="container">
+       <div class="video-grid">
+           <div class="video-item">
+               <img src="https://i.pinimg.com/564x/7d/9b/68/7d9b684dde492eec8262658d1aa6cd32.jpg" alt="Thumbnail">
+               <div class="video-info">
+                   <h3>Shaaaaaark</h3>
+                   <p>Smth about shaaaaark</p>
+               </div>
+           </div>
+           <div class="video-item">
+               <img src="https://i.pinimg.com/564x/46/d6/37/46d6373897dd9b2b0059cbfa2b385d1b.jpg" alt="Thumbnail">
+               <div class="video-info">
+                   <h3>More Shaaaaaaaaark</h3>
+                   <p>Smth about shaaaaark</p>
+               </div>
+           </div>
+           <div class="video-item">
+               <img src="https://i.etsystatic.com/41504390/r/il/006704/4675909644/il_1140xN.4675909644_pya8.jpg" alt="Thumbnail">
+               <div class="video-info">
+                   <h3>More more Shaaaaaark</h3>
+                   <p>Smth about shaaaaark</p>
+               </div>
+           </div>
+       </div>
+   </div>
+
+            <!-- Repeat video-item for more videos -->
+        </div>
+    </div>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+            themeIcon.classList.toggle('fa-sun');
+            themeIcon.classList.toggle('fa-moon');
+        });
+    </script>
+</body>
+</html>
